@@ -1,21 +1,12 @@
 export function fetchCryptos() {
     return dispatch => {
       dispatch(fetchCryptosBegin());
-      return fetch(" https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10",
-            {
-                method: 'GET',
-                mode: 'cors',
-                credentials: 'include',
-                headers: {
-                'X-CMC_PRO_API_KEY': '049786a1-4559-470e-821e-9bed74ae3bb0',
-                'Accept': 'application/json'
-            }
-        })
+      return fetch(" https://api.coinmarketcap.com/v1/ticker/")
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
-          dispatch(fetchCryptosSuccess(json.data));
-          return json.data;
+          dispatch(fetchCryptosSuccess(json));
+          return json;
         })
         .catch(error => dispatch(fetchCryptosFailure(error)));
     };

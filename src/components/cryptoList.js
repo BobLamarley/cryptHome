@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchCryptos } from "../actions/cryptoActions";
+import './cryptoList.css';
 
 class CryptoList extends React.Component {
   componentDidMount() {
@@ -19,9 +20,9 @@ class CryptoList extends React.Component {
     }
 
     return (
-      <ul>
+      <ul id="cryptoList">
         {cryptos.map(crypto =>
-          <li key={crypto.id}>{crypto.name}</li>
+          <li key={crypto.id}>{crypto.name} {crypto.price_usd}</li>
         )}
       </ul>
     );
@@ -29,9 +30,9 @@ class CryptoList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  cryptos: state.cryptos.items,
-  loading: state.cryptos.loading,
-  error: state.cryptos.error
+  cryptos: state.crypto.items,
+  loading: state.crypto.loading,
+  error: state.crypto.error
 });
 
 export default connect(mapStateToProps)(CryptoList);
