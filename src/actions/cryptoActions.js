@@ -1,12 +1,12 @@
+import axios from 'axios';
+
 export function fetchCryptos() {
     return dispatch => {
       dispatch(fetchCryptosBegin());
-      return fetch(" https://api.coinmarketcap.com/v1/ticker/")
-        .then(handleErrors)
-        .then(res => res.json())
-        .then(json => {
-          dispatch(fetchCryptosSuccess(json));
-          return json;
+      return axios.get("https://api.coinmarketcap.com/v1/ticker/")
+        .then( response => {
+          dispatch(fetchCryptosSuccess(response.data));
+          return response.data;
         })
         .catch(error => dispatch(fetchCryptosFailure(error)));
     };

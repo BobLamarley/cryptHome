@@ -10,7 +10,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Menu from './components/menu/menu';
 import './components/menu/menu.css';
 import { Link } from "react-router-dom";
-import CryptoList from './components/cryptoList';
+import CryptoList from './components/cryptoList/cryptoList';
 
 
 const store = configureStore();
@@ -20,11 +20,7 @@ ReactDOM.render(
         <Router>
             <div>
                 <Route exact path="/" component={Home} />
-                <Route path="/cryptolist" component={CryptoList} />
-                <Menu>
-                    <Link id="home" to="/">Home</Link>
-                    <Link id="cryptoList" to="/cryptolist">cryptolist</Link>
-                </Menu>  
+                <Route path="/cryptolist" component={CryptoList} /> 
             </div>    
         </Router>
     </Provider>,

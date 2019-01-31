@@ -1,4 +1,6 @@
 import React from "react";
+import './home.css';
+import MenuReady from '../menuReady/menuReady';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -6,7 +8,12 @@ class Home extends React.Component {
 
   render() {
     return (
-     <p>HOME</p>
+      <div>
+        <MenuReady></MenuReady> 
+        <div id="home">
+            <p>HOME</p>
+        </div>    
+      </div>
     );
   }
 }
