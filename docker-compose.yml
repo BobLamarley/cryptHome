@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+
+  prod-app:
+    container_name: prod-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '81:80'
